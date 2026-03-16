@@ -1,6 +1,7 @@
 package com.pm.patientservice.exception;
 
 
+import com.pm.patientservice.dto.PatientResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(EmailAlreadyExistsException.class)
-    public ResponseEntity<Map<String,String>> handleValidationException1(EmailAlreadyExistsException ex){
+    public ResponseEntity<Map<String,String>> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex){
         Map<String,String> error = new HashMap<>();
 
         //log.warn("Email address already exist: {}",ex.getMessage());
@@ -37,6 +38,19 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.badRequest().body(error);
     }
+
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<Map<String,String>> handlePatientNotFoundException(PatientNotFoundException ex){
+        Map<String,String> errors = new HashMap<>();
+
+        log.warn("Patient not found {}",ex.getMessage());
+        errors.put("message","Patient Not Found");
+
+        return ResponseEntity.badRequest().body(errors);
+
+    }
+
+
 
 
     
