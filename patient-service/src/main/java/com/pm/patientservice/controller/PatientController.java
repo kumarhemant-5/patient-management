@@ -3,8 +3,7 @@ package com.pm.patientservice.controller;
 import com.pm.patientservice.dto.PatientRequestDTO;
 import com.pm.patientservice.dto.PatientResponseDTO;
 import com.pm.patientservice.service.PatientService;
-import com.pm.patientservice.validators.CreatePatientValidationGroup;
-import jakarta.validation.Valid;
+import com.pm.patientservice.dto.validators.CreatePatientValidationGroup;
 
 import jakarta.validation.groups.Default;
 import org.springframework.http.ResponseEntity;
